@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NWARE.DataAccess\NWARE.DataAccess.csproj" />
+    <ProjectReference Include="..\NWARE.Domain\NWARE.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
