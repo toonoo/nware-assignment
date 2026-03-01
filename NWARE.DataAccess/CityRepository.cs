@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+using NWARE.Business.Helpers;
 
 namespace NWARE.DataAccess
 {
@@ -25,8 +27,16 @@ namespace NWARE.DataAccess
             if (!_cache.TryGetValue(CacheKey, out List<CityResponseModel> cityList))
             {
                 using FileStream fs = File.OpenRead("DataSource/current.city.list.json");
-             
-                var cities = await JsonSerializer.DeserializeAsync<List<CityModel>>(fs);
+
+                // convert null empty to 0 for population field
+                var options = new JsonSerializerOptions
+                {
+                    NumberHandling = JsonNumberHandling.AllowReadingFromString,
+                    PropertyNameCaseInsensitive = true,
+                    Converters = { new EmptyToDoubleConverter() }
+                };
+
+                var cities = await JsonSerializer.DeserializeAsync<List<CityModel>>(fs, options);
 
                 cityList = cities.Select(c => new CityResponseModel
                 {
