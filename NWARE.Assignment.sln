@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36804.6 d17.14
+VisualStudioVersion = 17.14.36804.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWARE.API", "NWARE.API\NWARE.API.csproj", "{D79247E4-369A-4DDB-A43B-25572BA86D8E}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWARE.Business", "NWARE.Business\NWARE.Business.csproj", "{EF09FB46-F690-4BC2-8F63-835A92DCB091}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWARE.DataAccess", "NWARE.DataAccess\NWARE.DataAccess.csproj", "{B6EAA9FF-7F01-4F9B-BF62-975373945E0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NWARE.Common", "NWARE.Common\NWARE.Common.csproj", "{D75E9B6F-895B-44B5-B021-12B7C261D388}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B6EAA9FF-7F01-4F9B-BF62-975373945E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6EAA9FF-7F01-4F9B-BF62-975373945E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6EAA9FF-7F01-4F9B-BF62-975373945E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D75E9B6F-895B-44B5-B021-12B7C261D388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D75E9B6F-895B-44B5-B021-12B7C261D388}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D75E9B6F-895B-44B5-B021-12B7C261D388}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D75E9B6F-895B-44B5-B021-12B7C261D388}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

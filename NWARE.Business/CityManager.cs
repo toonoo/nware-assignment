@@ -1,4 +1,5 @@
 ﻿using NWARE.Business.Interface;
+using NWARE.Common;
 using NWARE.DataAccess.Interface;
 using NWARE.Domain;
 using System.Collections.Generic;
@@ -14,14 +15,34 @@ namespace NWARE.Business
             this._cityRepository = cityRepository;
         }
 
-        public async Task<List<CityResponseModel>> GetCities()
+        public async Task<ServiceResult<List<CityResponseModel>>> GetCities()
         {
-            return await this._cityRepository.GetCities();
+            var cities = await this._cityRepository.GetCities();
+            if (cities == null)
+            {
+                return ServiceResult<List<CityResponseModel>>.Fail("City repository is not available.");
+            }
+            return ServiceResult<List<CityResponseModel>>.SuccessList(cities);
         }
 
-        public async Task<List<CityResponseModel>> GetCitiesByName(string cityName)
+        public async Task<ServiceResult<List<CityResponseModel>>> GetCitiesByName(string cityName)
         {
-            return await this._cityRepository.GetCitiesByName(cityName);
+            ServiceResult<List<CityResponseModel>> result;
+            try
+            {
+                var city = await this._cityRepository.GetCitiesByName(cityName);
+                if (city == null)
+                {
+                    return ServiceResult<List<CityResponseModel>>.Fail($"No cities found with the name '{cityName}'.");
+                }
+                result = ServiceResult<List<CityResponseModel>>.SuccessList(city);
+            }
+            catch (System.Exception ex)
+            {
+                return ServiceResult<List<CityResponseModel>>.Fail($"An error occurred while retrieving cities: {ex.Message}");
+            }
+
+            return result;
         }
     }
 }

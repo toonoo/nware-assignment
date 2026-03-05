@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NWARE.Common\NWARE.Common.csproj" />
     <ProjectReference Include="..\NWARE.DataAccess\NWARE.DataAccess.csproj" />
     <ProjectReference Include="..\NWARE.Domain\NWARE.Domain.csproj" />
   </ItemGroup>
