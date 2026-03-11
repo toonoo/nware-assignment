@@ -2,12 +2,14 @@
 using NWARE.Business.Interface;
 using NWARE.Common;
 using NWARE.Domain;
+using NWARE.API.Authorization;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NWARE.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class CityController : Controller
     {
         private readonly ICityManager _cityManager;
