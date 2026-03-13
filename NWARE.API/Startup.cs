@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NWARE.API.Filters;
 using NWARE.API.Authorization;
+using NWARE.API.Logging;
+using NWARE.Common.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace NWARE.API
@@ -24,6 +26,7 @@ namespace NWARE.API
         {
             services.AddScoped<ValidateActionFilterAttribute>();
             services.AddScoped<IAuthorizationService, AuthorizationService>();
+            services.AddSingleton<ILoggingService, LoggingService>();
             
             services.AddMvc(options =>
             {
@@ -65,12 +68,15 @@ namespace NWARE.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggingService loggingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Add Request/Response logging middleware (must be early in pipeline)
+            app.UseMiddleware<RequestResponseLoggingMiddleware>(loggingService);
 
             app.UseRouting();
 
